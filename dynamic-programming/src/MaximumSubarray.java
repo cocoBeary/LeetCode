@@ -14,16 +14,13 @@ public class MaximumSubarray {
 		if (nums == null || nums.length == 0)
 			return 0;
 
-		int maxSum = nums[0];
+		int maxSum = Integer.MIN_VALUE;
 		int preSum = Integer.MIN_VALUE;
 
 		for (int i = 0; i < nums.length; i++) {
-			if (preSum > 0) {
-				preSum += nums[i];
-				if (preSum > maxSum)
-					maxSum = preSum;
-			} else
-				preSum = nums[i];
+			preSum = preSum > 0 ? preSum + nums[i] : nums[i];
+			if (preSum > maxSum)
+				maxSum = preSum;
 		}
 
 		return maxSum;

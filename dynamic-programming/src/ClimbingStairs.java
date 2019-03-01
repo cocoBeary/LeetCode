@@ -21,5 +21,27 @@
 // 3. 2 steps + 1 step
 
 public class ClimbingStairs {
+	public int climbStairs(int n) {
+		if (n <= 2)
+			return n;
 
+		int oneStepBef = 2;
+		int twoStepsBef = 1;
+		int curStep = 0;
+
+		for (int i = 2; i < n; i++) {
+			curStep = oneStepBef + twoStepsBef;
+			twoStepsBef = oneStepBef;
+			oneStepBef = curStep;
+		}
+
+		return curStep;
+	}
+
+	public static void main(String[] args) {
+		ClimbingStairs test = new ClimbingStairs();
+		System.out.println(test.climbStairs(3));
+		System.out.println(test.climbStairs(4));
+		System.out.println(test.climbStairs(5));
+	}
 }

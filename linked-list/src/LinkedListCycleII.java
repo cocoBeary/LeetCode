@@ -30,13 +30,35 @@
 // Follow up:
 // Can you solve it without using extra space?
 
+// Time O(n)
+
 /**
  * Definition for singly-linked list. class ListNode { int val; ListNode next;
  * ListNode(int x) { val = x; next = null; } }
  */
 public class LinkedListCycleII {
 	public ListNode detectCycle(ListNode head) {
-		return head;
+		ListNode walker = head;
+		ListNode runner = head;
+		boolean isCycle = false;
+		while (runner != null && runner.next != null) {
+			walker = walker.next;
+			runner = runner.next.next;
+			if (runner == walker) {
+				isCycle = true;
+				break;
+			}
+		}
 
+		if (!isCycle)
+			return null;
+
+		runner = head;
+		while (runner != walker) {
+			walker = walker.next;
+			runner = runner.next;
+		}
+
+		return walker;
 	}
 }

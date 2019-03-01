@@ -31,10 +31,36 @@
 
 // Input: "{[]}"
 // Output: true
+import java.util.*;
 
 public class ValidParentheses {
 	public boolean isValid(String s) {
-		return false;
+		if (s == null || s.length() == 0)
+			return true;
 
+		Map<Character, Character> map = new HashMap<>();
+		map.put(')', '(');
+		map.put(']', '[');
+		map.put('}', '{');
+
+		Deque<Character> set = new ArrayDeque<>();
+
+		for (char i : s.toCharArray()) {
+			if (!map.containsKey(i))
+				set.push(i);
+			else {
+				if (set.isEmpty() || set.pop() != map.get(i))
+					return false;
+			}
+		}
+
+		return set.isEmpty();
+	}
+
+	public static void main(String[] args) {
+		ValidParentheses test = new ValidParentheses();
+		System.out.println(test.isValid("()[]{}"));
+		System.out.println(test.isValid("([)]"));
+		System.out.println(test.isValid("{[]}"));
 	}
 }

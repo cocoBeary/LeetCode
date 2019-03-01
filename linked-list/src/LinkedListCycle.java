@@ -39,7 +39,7 @@ public class LinkedListCycle {
 		while (runner != null && runner.next != null) {
 			walker = walker.next;
 			runner = runner.next.next;
-			if (walker == runner)
+			if (runner == walker)
 				return true;
 		}
 		return false;

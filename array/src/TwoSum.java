@@ -11,8 +11,7 @@
 // Because nums[0] + nums[1] = 2 + 7 = 9,
 // return [0, 1].
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TwoSum {
 	// HashMap
@@ -21,9 +20,7 @@ public class TwoSum {
 		Map<Integer, Integer> map = new HashMap<>();
 		for (int i = 0; i < nums.length; i++) {
 			if (map.containsKey(target - nums[i])) {
-				res[0] = map.get(target - nums[i]);
-				res[1] = i;
-				return res;
+				return new int[] { map.get(target - nums[i]), i };
 			} else {
 				map.put(nums[i], i);
 			}

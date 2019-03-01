@@ -17,25 +17,28 @@
  */
 public class AddTwoNumbers {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		ListNode res = new ListNode(0);
-		ListNode temp = res;
-		int val = 0;
-		while (l1 != null || l2 != null) {
-			val = val / 10;
+		ListNode dummy = new ListNode(0);
+		ListNode cur = dummy;
+		int addOne = 0;
+
+		while (l1 != null || l2 != null || addOne > 0) {
+			ListNode node = new ListNode(0);
 			if (l1 != null) {
-				val += l1.val;
+				node.val += l1.val;
 				l1 = l1.next;
 			}
 			if (l2 != null) {
-				val += l2.val;
+				node.val += l2.val;
 				l2 = l2.next;
 			}
-			temp.next = new ListNode(val % 10);
-			temp = temp.next;
+			node.val += addOne;
+			addOne = node.val / 10;
+			node.val = node.val % 10;
+			cur.next = node;
+			cur = node;
 		}
-		if (val / 10 != 0)
-			temp.next = new ListNode(1);
-		return res.next;
+
+		return dummy.next;
 	}
 
 	public static void main(String[] args) {

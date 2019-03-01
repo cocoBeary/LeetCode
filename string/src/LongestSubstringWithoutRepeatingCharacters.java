@@ -1,3 +1,5 @@
+import java.util.*;
+
 // 3. Longest Substring Without Repeating Characters
 // Medium
 // HashTable, Two Pointer, String
@@ -22,6 +24,31 @@
 
 public class LongestSubstringWithoutRepeatingCharacters {
 	public int lengthOfLongestSubstring(String s) {
-		return 0;
+		if (s == null || s.length() == 0)
+			return 0;
+
+		int maxLen = 0;
+		int len = 0;
+
+		Set<Character> set = new HashSet<>();
+		for (int i = 0; i < s.length(); i++) {
+			while (set.contains(s.charAt(i))) {
+				set.remove(s.charAt(i - len));
+				len--;
+			}
+			set.add(s.charAt(i));
+			len++;
+			if (len > maxLen)
+				maxLen = len;
+		}
+
+		return maxLen;
+	}
+
+	public static void main(String[] args) {
+		LongestSubstringWithoutRepeatingCharacters test = new LongestSubstringWithoutRepeatingCharacters();
+		System.out.println(test.lengthOfLongestSubstring("abcabcbb"));
+		System.out.println(test.lengthOfLongestSubstring("bbbbb"));
+		System.out.println(test.lengthOfLongestSubstring("pwwkew"));
 	}
 }
