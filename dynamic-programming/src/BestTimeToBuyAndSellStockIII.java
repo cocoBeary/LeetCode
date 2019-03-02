@@ -29,21 +29,21 @@ import java.util.*;
 
 public class BestTimeToBuyAndSellStockIII {
 	public int maxProfit(int[] prices) {
-		int hold1 = Integer.MIN_VALUE, hold2 = Integer.MIN_VALUE;
-		int release1 = 0, release2 = 0;
+		int buy1 = Integer.MIN_VALUE, buy2 = Integer.MIN_VALUE;
+		int sell1 = 0, sell2 = 0;
 		for (int i : prices) {
-//			hold1 = Math.max(hold1, -i);
-//			release1 = Math.max(release1, hold1 + i);
-//			hold2 = Math.max(hold2, release1 - i);
-//			release2 = Math.max(release2, hold2 + i);
+			buy1 = Math.max(buy1, -i);
+			sell1 = Math.max(sell1, buy1 + i);
+			buy2 = Math.max(buy2, sell1 - i);
+			sell2 = Math.max(sell2, buy2 + i);
 						
-			release2 = Math.max(release2, hold2 + i);
-			hold2 = Math.max(hold2, release1 - i);
-			release1 = Math.max(release1, hold1 + i);
-			hold1 = Math.max(hold1, -i);
-			System.out.println(i + "\t->  " + hold1 + "\t" + release1 + "\t" + hold2 + "\t" + release2);
+//			sell2 = Math.max(sell2, buy2 + i);
+//			buy2 = Math.max(buy2, sell1 - i);
+//			sell1 = Math.max(sell1, buy1 + i);
+//			buy1 = Math.max(buy1, -i);
+			System.out.println(i + "\t->  " + buy1 + "\t" + sell1 + "\t" + buy2 + "\t" + sell2);
 		}
-		return release2;
+		return sell2;
 	}
 
 	public static void main(String[] args) {
