@@ -1,3 +1,5 @@
+import java.util.*;
+
 // 141. Linked List Cycle
 // Easy
 // Linked List, Two Pointers
@@ -41,6 +43,19 @@ public class LinkedListCycle {
 			runner = runner.next.next;
 			if (runner == walker)
 				return true;
+		}
+		return false;
+	}
+	
+	public boolean hasCycle2(ListNode head) {
+		Set<ListNode> nodesSeen = new HashSet<>();
+		while (head != null) {
+			if (nodesSeen.contains(head)) {
+				return true;
+			} else {
+				nodesSeen.add(head);
+			}
+			head = head.next;
 		}
 		return false;
 	}

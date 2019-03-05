@@ -13,16 +13,11 @@ public class MaximumSubarray {
 	public int maxSubArray(int[] nums) {
 		if (nums == null || nums.length == 0)
 			return 0;
-
-		int maxSum = Integer.MIN_VALUE;
-		int preSum = Integer.MIN_VALUE;
-
-		for (int i = 0; i < nums.length; i++) {
-			preSum = preSum > 0 ? preSum + nums[i] : nums[i];
-			if (preSum > maxSum)
-				maxSum = preSum;
+		int preSum = 0, maxSum = Integer.MIN_VALUE;
+		for (int i : nums) {
+			preSum = preSum >= 0 ? preSum + i : i;
+			maxSum = Math.max(maxSum, preSum);
 		}
-
 		return maxSum;
 	}
 

@@ -38,6 +38,24 @@ public class ValidParentheses {
 		if (s == null || s.length() == 0)
 			return true;
 
+		Deque<Character> set = new ArrayDeque<>();
+		for (char c : s.toCharArray()) {
+			if (c == '(')
+				set.push(')');
+			else if (c == '[')
+				set.push(']');
+			else if (c == '{')
+				set.push('}');
+			else if (set.isEmpty() || set.pop() != c)
+				return false;
+		}
+		return set.isEmpty();
+	}
+	
+	public boolean isValid1(String s) {
+		if (s == null || s.length() == 0)
+			return true;
+
 		Map<Character, Character> map = new HashMap<>();
 		map.put(')', '(');
 		map.put(']', '[');

@@ -16,7 +16,7 @@
 import java.util.*;
 
 public class PerfectSquares {
-	public int numSquares(int n) {
+	public int numSquares0(int n) {
 		if(isSquare(n))
 			return 1;
 		
@@ -50,7 +50,7 @@ public class PerfectSquares {
 		int sqrt = (int)Math.sqrt(n);
 		return sqrt*sqrt == n;
 	}
-/*	
+	
 	public int numSquares(int n) {
 		int[] dp = new int[n + 1];
 		for (int i = 1; i <= n; ++i) {
@@ -65,7 +65,7 @@ public class PerfectSquares {
 
 		return dp[n];
 	}
-*/
+
 	public static void main(String[] args) {
 		PerfectSquares test = new PerfectSquares();
 		System.out.println(test.numSquares(1));

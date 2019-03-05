@@ -30,9 +30,9 @@ public class PlusOne {
 		int n = digits.length;
 		int addOne = 1;
 		for (int i = n - 1; i >= 0; i--) {
-			int temp = (digits[i] + addOne) % 10;
-			addOne = (digits[i] + addOne) / 10;
-			digits[i] = temp;
+			digits[i] += addOne;
+			addOne = digits[i] / 10;
+			digits[i] = digits[i] % 10;
 		}
 		if (addOne == 0)
 			return digits;

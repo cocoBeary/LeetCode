@@ -32,15 +32,15 @@ public class BestTimeToBuyAndSellStockIII {
 		int buy1 = Integer.MIN_VALUE, buy2 = Integer.MIN_VALUE;
 		int sell1 = 0, sell2 = 0;
 		for (int i : prices) {
-			buy1 = Math.max(buy1, -i);
-			sell1 = Math.max(sell1, buy1 + i);
-			buy2 = Math.max(buy2, sell1 - i);
-			sell2 = Math.max(sell2, buy2 + i);
-						
-//			sell2 = Math.max(sell2, buy2 + i);
-//			buy2 = Math.max(buy2, sell1 - i);
-//			sell1 = Math.max(sell1, buy1 + i);
 //			buy1 = Math.max(buy1, -i);
+//			sell1 = Math.max(sell1, buy1 + i);
+//			buy2 = Math.max(buy2, sell1 - i);
+//			sell2 = Math.max(sell2, buy2 + i);
+						
+			sell2 = Math.max(sell2, buy2 + i);
+			buy2 = Math.max(buy2, sell1 - i);
+			sell1 = Math.max(sell1, buy1 + i);
+			buy1 = Math.max(buy1, -i);
 			System.out.println(i + "\t->  " + buy1 + "\t" + sell1 + "\t" + buy2 + "\t" + sell2);
 		}
 		return sell2;

@@ -20,9 +20,8 @@ public class AddTwoNumbers {
 		ListNode dummy = new ListNode(0);
 		ListNode cur = dummy;
 		int addOne = 0;
-
 		while (l1 != null || l2 != null || addOne > 0) {
-			ListNode node = new ListNode(0);
+			ListNode node = new ListNode(addOne);
 			if (l1 != null) {
 				node.val += l1.val;
 				l1 = l1.next;
@@ -31,13 +30,12 @@ public class AddTwoNumbers {
 				node.val += l2.val;
 				l2 = l2.next;
 			}
-			node.val += addOne;
+
 			addOne = node.val / 10;
 			node.val = node.val % 10;
 			cur.next = node;
 			cur = node;
 		}
-
 		return dummy.next;
 	}
 
