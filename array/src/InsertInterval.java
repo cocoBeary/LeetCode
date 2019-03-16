@@ -35,7 +35,7 @@ public class InsertInterval {
 		List<Interval> newIntervals = new ArrayList<>();
 		while (i < intervals.size() && intervals.get(i).end < newInterval.start) {
 			newIntervals.add(intervals.get(i++));
-		}		
+		}
 		while (i < intervals.size() && intervals.get(i).start <= newInterval.end) {
 			newInterval.start = Math.min(newInterval.start, intervals.get(i).start);
 			newInterval.end = Math.max(newInterval.end, intervals.get(i).end);

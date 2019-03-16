@@ -24,9 +24,8 @@
  * Explanation: Intervals [1,4] and [4,5] are considered overlapping.
  */
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class MergeIntervals {
 	// time O(nlogn) space O(n)
