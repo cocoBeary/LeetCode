@@ -43,6 +43,18 @@ import java.util.Map;
  */
 public class WordPattern {
 	public boolean wordPattern(String pattern, String str) {
+		String[] words = str.split("\\s+");
+		if (words.length != pattern.length())
+			return false;
+		Map<Character, Integer> index1 = new HashMap<>();
+		Map<String, Integer> index2 = new HashMap<>();
+		for (Integer i = 0; i < words.length; ++i)
+			if (index1.put(pattern.charAt(i), i) != index2.put(words[i], i))
+				return false;
+		return true;
+	}
+
+	public boolean wordPattern1(String pattern, String str) {
 		String[] words = str.split(" ");
 		if (words.length != pattern.length())
 			return false;
@@ -52,8 +64,8 @@ public class WordPattern {
 				return false;
 		return true;
 	}
-	
+
 	public static void main(String[] args) {
-		System.out.println(new WordPattern().wordPattern("abba","dog cat cat dog"));
+		System.out.println(new WordPattern().wordPattern("abba", "dog cat cat dog"));
 	}
 }
