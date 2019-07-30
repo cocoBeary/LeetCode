@@ -13,3 +13,4 @@ Servers/*
 array/.settings/org.eclipse.jdt.core.prefs
 .recommenders/*
 *.class
+/.recommenders/
