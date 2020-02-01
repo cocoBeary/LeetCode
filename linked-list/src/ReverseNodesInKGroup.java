@@ -21,40 +21,32 @@
  */
 
 public class ReverseNodesInKGroup {
+    //time O(n) space O(n)
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode curr = head;
+        if (head == null)
+            return head;
+
         int count = 0;
-        while (curr != null && count != k) {
-            curr = curr.next;
+        ListNode cur = head;
+        while (count < k && head != null) {
+            head = head.next;
             count++;
         }
+
         if (count == k) {
-            curr = reverseKGroup(curr, k);
-
-            head = reverseLinkedList(head, k, curr);
-//            ListNode cur = head;
-//            ListNode next = null;
-//            ListNode pre = curr;
-//            while (count-- > 0) {
-//                next = cur.next;
-//                cur.next = pre;
-//                pre = cur;
-//                cur = next;
-//            }
-//            head = pre;
-        }
-        return head;
-    }
-
-    public ListNode reverseLinkedList(ListNode start, int k, ListNode end) {
-        ListNode pre = end, cur = start, next = null;
-        while (k-- > 0) {
-            next = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = next;
-        }
-        return pre;
+            head = reverseKGroup(head, k);
+            ListNode pre = head;
+            ListNode next;
+            while (count > 0) {
+                next = cur.next;
+                cur.next = pre;
+                pre = cur;
+                cur = next;
+                count--;
+            }
+            return pre;
+        } else
+            return cur;
     }
 
     public static void main(String[] args) {
